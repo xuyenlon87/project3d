@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -6,28 +6,37 @@ using UnityEngine.AI;
 
 public class BotMovement : MonoBehaviour
 {
-    public Transform playerFoot;
-    public NavMeshAgent agent;
-    public float reachingRadius;
-    // Start is called before the first frame update
-    void Start()
+    private NavMeshAgent agent;
+
+    private void Start()
     {
-        
+        agent = GetComponent<NavMeshAgent>();
+
+        // Gọi coroutine để thay đổi điểm đích của bot sau mỗi khoảng thời gian
+        StartCoroutine(ChangeDestination());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator ChangeDestination()
     {
-        float distance = Vector3.Distance(transform.position, playerFoot.position);
-        if(distance > reachingRadius)
+        while (true)
         {
-            agent.isStopped = false;
-            agent.SetDestination(playerFoot.position);
+            Vector3 randomPoint = GetRandomPointOnNavMesh();
+            agent.SetDestination(randomPoint);
+
+            yield return new WaitForSeconds(Random.Range(0.1f, 2f));
         }
-        else
+    }
+
+    private Vector3 GetRandomPointOnNavMesh()
+    {
+        NavMeshHit hit;
+        Vector3 randomPoint = transform.position + Random.insideUnitSphere * 10f;
+
+        if (NavMesh.SamplePosition(randomPoint, out hit, 10f, NavMesh.AllAreas))
         {
-            agent.isStopped = true;
+            return hit.position;
         }
-        
+
+        return transform.position;
     }
 }
