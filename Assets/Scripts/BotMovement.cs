@@ -9,6 +9,8 @@ public class BotMovement : MonoBehaviour
     [SerializeField]
     private bool isBomb;
     private NavMeshAgent agent;
+    public GameObject Hand;
+    [SerializeField]
     private Transform playerFoot;
     [SerializeField]
     private float reachingRadius;
@@ -17,6 +19,19 @@ public class BotMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Bomb"))
         {
             isBomb = true;
+            collision.transform.parent = Hand.transform;
+            collision.transform.localPosition = Vector3.zero;
+            
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bomb"))
+        {
+            isBomb = false;
+            collision.transform.parent = null;
+
         }
     }
 
@@ -57,8 +72,9 @@ public class BotMovement : MonoBehaviour
     {
         if (isBomb)
         {
+            Debug.Log("isBomb");
             float distance = Vector3.Distance(transform.position, playerFoot.position);
-            if(distance > reachingRadius)
+            if (distance > reachingRadius)
             {
                 agent.isStopped = false;
                 agent.SetDestination(playerFoot.position);
@@ -67,6 +83,10 @@ public class BotMovement : MonoBehaviour
             {
                 agent.isStopped = true;
             }
+        }
+        else if (!isBomb)
+        {
+
         }
     }
 }
