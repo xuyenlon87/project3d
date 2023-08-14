@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCollider : MonoBehaviour
+public class BotCollider : MonoBehaviour
 {
+    
     [SerializeField]
-    private bool isBomb;
-    public GameObject Hand;
+    private GameObject hand;
     private float _receiveAt;
     private float _delayToPassBomb = 1f;
 
@@ -16,28 +16,29 @@ public class PlayerCollider : MonoBehaviour
     {
         if (CanPassBomb)
         {
-            bomb.parent = Hand.transform;
+            BotMovement.isBomb = true;
+            bomb.parent = hand.transform;
             bomb.localPosition = Vector3.zero;
             _receiveAt = Time.time;
-
         }
+
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bomb"))
+        if (/*other.CompareTag("Player") || other.CompareTag("Bot")*/ other.CompareTag("Bomb"))
         {
-            isBomb = true;
+            BotMovement.isBomb = true;
             ReceiveBomb(other.transform);
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Bomb"))
+        if (/*other.CompareTag("Player") || other.CompareTag("Bot")*/ other.CompareTag("Bomb"))
         {
-            isBomb = false;
+            BotMovement.isBomb = false;
             Debug.Log("exitbom");
         }
     }

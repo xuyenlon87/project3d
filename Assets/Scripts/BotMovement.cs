@@ -6,34 +6,12 @@ using UnityEngine.AI;
 
 public class BotMovement : MonoBehaviour
 {
-    [SerializeField]
-    private bool isBomb;
+    public static bool isBomb;
     private NavMeshAgent agent;
-    public GameObject Hand;
     [SerializeField]
     private Transform playerFoot;
     [SerializeField]
     private float reachingRadius;
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Bomb"))
-        {
-            isBomb = true;
-            collision.transform.parent = Hand.transform;
-            collision.transform.localPosition = Vector3.zero;
-            
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Bomb"))
-        {
-            isBomb = false;
-            collision.transform.parent = null;
-
-        }
-    }
 
 
     private void Start()
@@ -47,12 +25,15 @@ public class BotMovement : MonoBehaviour
 
     private IEnumerator ChangeDestination()
     {
-        while (true)
+        if (!isBomb)
         {
-            Vector3 randomPoint = GetRandomPointOnNavMesh();
-            agent.SetDestination(randomPoint);
+            while (true)
+            {
+                Vector3 randomPoint = GetRandomPointOnNavMesh();
+                agent.SetDestination(randomPoint);
 
-            yield return new WaitForSeconds(Random.Range(0.01f, 1f));
+                yield return new WaitForSeconds(Random.Range(0.01f, 1f));
+            }
         }
     }
 
@@ -83,10 +64,6 @@ public class BotMovement : MonoBehaviour
             {
                 agent.isStopped = true;
             }
-        }
-        else if (!isBomb)
-        {
-
         }
     }
 }
