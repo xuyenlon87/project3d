@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class BotMovement : MonoBehaviour
 {
-    public static bool isBomb;
+    private BotState botState;
     private NavMeshAgent agent;
     [SerializeField]
     private Transform playerFoot;
@@ -16,7 +16,7 @@ public class BotMovement : MonoBehaviour
 
     private void Start()
     {
-        isBomb = false;
+        botState = GetComponent<BotState>();
         agent = GetComponent<NavMeshAgent>();
 
         // Gọi coroutine để thay đổi điểm đích của bot sau mỗi khoảng thời gian
@@ -25,7 +25,7 @@ public class BotMovement : MonoBehaviour
 
     private IEnumerator ChangeDestination()
     {
-        if (!isBomb)
+        if (!botState.hasBomb)
         {
             while (true)
             {
@@ -51,7 +51,7 @@ public class BotMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (isBomb)
+        if (botState.hasBomb)
         {
             Debug.Log("isBomb");
             float distance = Vector3.Distance(transform.position, playerFoot.position);

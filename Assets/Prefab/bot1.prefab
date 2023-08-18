@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790615950}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 6044222380166353295}
   - component: {fileID: 6044222380166353292}
   - component: {fileID: 1189932567408789117}
+  - component: {fileID: 5165137294876157129}
   m_Layer: 0
   m_Name: bot1
   m_TagString: Bot
@@ -206,7 +207,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5000001
-  m_Speed: 15
+  m_Speed: 2
   m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -231,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerFoot: {fileID: 0}
-  reachingRadius: 1.5
+  reachingRadius: 1
 --- !u!114 &1189932567408789117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,3 +246,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 790615950}
+--- !u!114 &5165137294876157129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6044222380166353293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c6054cbd4e8a44184dc50ce3cb3602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBomb: 0

@@ -4,42 +4,70 @@ using UnityEngine;
 
 public class BotCollider : MonoBehaviour
 {
-    
+
     [SerializeField]
     private GameObject hand;
+    private BotState botState;
     private float _receiveAt;
-    private float _delayToPassBomb = 1f;
+    private float _delayToPassBomb = 10f;
+
+    public BotState BotState
+    {
+        get
+        {
+            if (!botState)
+                botState = GetComponent<BotState>();
+            return botState;
+        }
+    }
+    private bool hasBomb
+    {
+        get
+        {
+            return BotState.hasBomb;
+        }
+        set
+        {
+            BotState.hasBomb = value;
+        }
+    }
 
     private bool CanPassBomb => Time.time - _receiveAt >= _delayToPassBomb;
 
-    private void ReceiveBomb(Transform bomb)
+    public void ReceiveBomb(Transform bomb)
     {
-        if (CanPassBomb)
-        {
-            BotMovement.isBomb = true;
-            bomb.parent = hand.transform;
-            bomb.localPosition = Vector3.zero;
-            _receiveAt = Time.time;
-        }
+        hasBomb = true;
+        bomb.parent = hand.transform;
+        bomb.localPosition = Vector3.zero;
+        _receiveAt = Time.time;
 
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (/*other.CompareTag("Player") || other.CompareTag("Bot")*/ other.CompareTag("Bomb"))
+        if (hasBomb && CanPassBomb)
         {
-            BotMovement.isBomb = true;
-            ReceiveBomb(other.transform);
+            if (other.CompareTag("Player"))
+            {
+                var player = other.GetComponent<PlayerCollider>();
+                player.ReceiveBomb(GetBomb());
+            }
+            else if (other.CompareTag("Bot"))
+            {
+                var bot = other.GetComponent<BotCollider>();
+                bot.ReceiveBomb(GetBomb());
+            }
         }
+
     }
 
-    void OnTriggerExit(Collider other)
+    private Transform GetBomb()
     {
-        if (/*other.CompareTag("Player") || other.CompareTag("Bot")*/ other.CompareTag("Bomb"))
-        {
-            BotMovement.isBomb = false;
-            Debug.Log("exitbom");
-        }
+        if (hasBomb)
+            return hand.transform.GetChild(0);
+        else
+            return null;
     }
+
 }

@@ -5,40 +5,44 @@ using UnityEngine;
 public class PlayerCollider : MonoBehaviour
 {
     [SerializeField]
-    private bool isBomb;
+    private bool hasBomb;
     public GameObject Hand;
-    private float _receiveAt;
-    private float _delayToPassBomb = 1f;
+    private float _receiveAt = float.MinValue;
+    private float _delayToPassBomb = 10f;
 
     private bool CanPassBomb => Time.time - _receiveAt >= _delayToPassBomb;
 
-    private void ReceiveBomb(Transform bomb)
+    public void ReceiveBomb(Transform bomb)
     {
-        if (CanPassBomb)
-        {
-            bomb.parent = Hand.transform;
-            bomb.localPosition = Vector3.zero;
-            _receiveAt = Time.time;
-
-        }
+        bomb.parent = Hand.transform;
+        bomb.localPosition = Vector3.zero;
+        _receiveAt = Time.time;
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bomb"))
+        //if (other.CompareTag("Bomb"))
+        //{
+        //    hasBomb = true;
+        //    ReceiveBomb(other.transform);
+        //}
+        //else
+        if (other.CompareTag("Bot"))
         {
-            isBomb = true;
-            ReceiveBomb(other.transform);
+            if (hasBomb && CanPassBomb)
+            {
+                var bot = other.GetComponent<BotCollider>();
+                bot.ReceiveBomb(GetBomb());
+            }
         }
     }
 
-    void OnTriggerExit(Collider other)
+    private Transform GetBomb()
     {
-        if (other.CompareTag("Bomb"))
-        {
-            isBomb = false;
-            Debug.Log("exitbom");
-        }
+        if (hasBomb)
+            return Hand.transform.GetChild(0);
+        else
+            return null;
     }
+
 }
