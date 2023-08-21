@@ -52,11 +52,13 @@ public class BotCollider : MonoBehaviour
             {
                 var player = other.GetComponent<PlayerCollider>();
                 player.ReceiveBomb(GetBomb());
+                hasBomb = false;
             }
             else if (other.CompareTag("Bot"))
             {
                 var bot = other.GetComponent<BotCollider>();
                 bot.ReceiveBomb(GetBomb());
+                hasBomb = false;
             }
         }
 

@@ -8,7 +8,7 @@ public class PlayerCollider : MonoBehaviour
     private bool hasBomb;
     public GameObject Hand;
     private float _receiveAt = float.MinValue;
-    private float _delayToPassBomb = 10f;
+    private float _delayToPassBomb = 2f;
 
     private bool CanPassBomb => Time.time - _receiveAt >= _delayToPassBomb;
 
@@ -21,18 +21,13 @@ public class PlayerCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.CompareTag("Bomb"))
-        //{
-        //    hasBomb = true;
-        //    ReceiveBomb(other.transform);
-        //}
-        //else
         if (other.CompareTag("Bot"))
         {
             if (hasBomb && CanPassBomb)
             {
                 var bot = other.GetComponent<BotCollider>();
                 bot.ReceiveBomb(GetBomb());
+                hasBomb = false;
             }
         }
     }

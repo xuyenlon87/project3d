@@ -53,7 +53,6 @@ public class BotMovement : MonoBehaviour
     {
         if (botState.hasBomb)
         {
-            Debug.Log("isBomb");
             float distance = Vector3.Distance(transform.position, playerFoot.position);
             if (distance > reachingRadius)
             {
