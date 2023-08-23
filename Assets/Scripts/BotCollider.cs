@@ -9,7 +9,8 @@ public class BotCollider : MonoBehaviour
     private GameObject hand;
     private BotState botState;
     private float _receiveAt;
-    private float _delayToPassBomb = 10f;
+    [SerializeField]
+    private float _delayToPassBomb = 2f;
 
     public BotState BotState
     {

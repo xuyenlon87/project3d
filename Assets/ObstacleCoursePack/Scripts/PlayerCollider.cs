@@ -8,6 +8,7 @@ public class PlayerCollider : MonoBehaviour
     private bool hasBomb;
     public GameObject Hand;
     private float _receiveAt = float.MinValue;
+    [SerializeField]
     private float _delayToPassBomb = 2f;
 
     private bool CanPassBomb => Time.time - _receiveAt >= _delayToPassBomb;
@@ -17,6 +18,7 @@ public class PlayerCollider : MonoBehaviour
         bomb.parent = Hand.transform;
         bomb.localPosition = Vector3.zero;
         _receiveAt = Time.time;
+        hasBomb = true;
     }
 
     private void OnTriggerEnter(Collider other)
