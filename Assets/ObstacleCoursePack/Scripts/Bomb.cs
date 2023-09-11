@@ -8,6 +8,8 @@ public class Bomb : MonoBehaviour
     public Text CountdownBomb;
     private bool isCountingDown = false;
     private float CountdownTime = 5f;
+    private BotState botState;
+    private PlayerCollider playerCollider;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +23,19 @@ public class Bomb : MonoBehaviour
         {
             CountdownTime -= Time.deltaTime;
             CountdownBomb.text = Mathf.CeilToInt(CountdownTime).ToString();
-            if(CountdownTime <= 0f)
+            if (CountdownTime <= 0f)
             {
                 Debug.Log("Boom");
+                if (botState.hasBomb)
+                {
+                    Destroy(botState);
+                }
+                if (playerCollider.hasBomb)
+                {
+                    Destroy(playerCollider);
+                }
                 isCountingDown = false;
-                
+
             }
         }
     }

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerCollider : MonoBehaviour
 {
-    [SerializeField]
-    private bool hasBomb;
+    public bool hasBomb;
     public GameObject Hand;
     private float _receiveAt = float.MinValue;
     [SerializeField]
