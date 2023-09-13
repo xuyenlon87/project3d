@@ -226,7 +226,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6044222380166353293}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2190fc4886adc3b4c9882591191d9ae4, type: 3}
   m_Name: 
@@ -247,6 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 790615950}
   _delayToPassBomb: 1
+  bomb: {fileID: 0}
 --- !u!114 &5165137294876157129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,3 +261,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasBomb: 0
+  alive: 0

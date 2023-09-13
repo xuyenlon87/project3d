@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController characterController;
     [SerializeField]
     private float movingSpeed;
-
     private void OnValidate()
     {
         characterController = GetComponent<CharacterController>();

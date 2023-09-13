@@ -5,10 +5,13 @@ using UnityEngine;
 public class PlayerCollider : MonoBehaviour
 {
     public bool hasBomb;
-    public GameObject Hand;
+    [SerializeField]
+    private GameObject Hand;
     private float _receiveAt = float.MinValue;
     [SerializeField]
     private float _delayToPassBomb = 2f;
+    private Bomb bomb;
+    private bool alive;
 
     private bool CanPassBomb => Time.time - _receiveAt >= _delayToPassBomb;
 
@@ -41,4 +44,25 @@ public class PlayerCollider : MonoBehaviour
             return null;
     }
 
+    private void Boom()
+    {
+        if (bomb.CountdownTime <= 0)
+        {
+            if (hasBomb)
+            {
+                Destroy(gameObject);
+                alive = false;
+            }
+        }
+    }
+
+    private void Start()
+    {
+        bomb = Hand.GetComponentInChildren<Bomb>();
+        alive = true;
+    }
+    void Update()
+    {
+        Boom();
+    }
 }

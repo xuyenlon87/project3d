@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class BotCollider : MonoBehaviour
 {
-
     [SerializeField]
     private GameObject hand;
     private BotState botState;
     private float _receiveAt;
     [SerializeField]
     private float _delayToPassBomb = 2f;
+    private bool alive;
+    private Bomb bomb;
 
     public BotState BotState
     {
@@ -65,6 +66,17 @@ public class BotCollider : MonoBehaviour
 
     }
 
+    private void Boom()
+    {
+        if(bomb.CountdownTime <= 0)
+        {
+            if (hasBomb)
+            {
+                Destroy(gameObject);
+                alive = false;
+            }
+        }
+    }
     private Transform GetBomb()
     {
         if (hasBomb)
@@ -72,5 +84,14 @@ public class BotCollider : MonoBehaviour
         else
             return null;
     }
+    private void Start()
+    {
+        bomb = hand.GetComponentInChildren<Bomb>();
+        alive = true;
+    }
 
+    private void Update()
+    {
+        Boom();
+    }
 }
