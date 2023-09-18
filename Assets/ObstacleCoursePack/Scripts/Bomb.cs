@@ -8,6 +8,7 @@ public class Bomb : MonoBehaviour
     public Text CountdownBomb;
     private bool isCountingDown = false;
     public float CountdownTime = 5f;
+    public GameObject bombPrefab;
     // Start is called before the first frame update
     void Start()
     {

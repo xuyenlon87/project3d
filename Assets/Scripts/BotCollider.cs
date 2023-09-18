@@ -72,6 +72,7 @@ public class BotCollider : MonoBehaviour
         {
             if (hasBomb)
             {
+                BotSpawn.ListPlayer.Remove(gameObject);
                 Destroy(gameObject);
                 alive = false;
             }
@@ -92,6 +93,7 @@ public class BotCollider : MonoBehaviour
 
     private void Update()
     {
+        bomb = hand.GetComponentInChildren<Bomb>();
         Boom();
     }
 }

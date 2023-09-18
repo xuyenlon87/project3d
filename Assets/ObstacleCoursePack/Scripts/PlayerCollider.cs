@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCollider : MonoBehaviour
 {
+    public GameObject Player;
     public bool hasBomb;
     [SerializeField]
     private GameObject Hand;
@@ -21,6 +22,7 @@ public class PlayerCollider : MonoBehaviour
         bomb.localPosition = Vector3.zero;
         _receiveAt = Time.time;
         hasBomb = true;
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -50,6 +52,7 @@ public class PlayerCollider : MonoBehaviour
         {
             if (hasBomb)
             {
+                BotSpawn.ListPlayer.Remove(gameObject);
                 Destroy(gameObject);
                 alive = false;
             }
@@ -58,11 +61,11 @@ public class PlayerCollider : MonoBehaviour
 
     private void Start()
     {
-        bomb = Hand.GetComponentInChildren<Bomb>();
         alive = true;
     }
     void Update()
     {
+        bomb = Hand.GetComponentInChildren<Bomb>();
         Boom();
     }
 }
