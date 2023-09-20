@@ -31,6 +31,24 @@ public class Bomb : MonoBehaviour
         isCountingDown = true;
     }
 
+    void  NewBom()
+    {
+        GameObject newBom = Instantiate(bombPrefab);
+        var index = Random.Range(0,BotSpawn.ListPlayer.Count - 1);
+        var recievePlayer = BotSpawn.ListPlayer[index];
+        if (recievePlayer == gameObject.CompareTag("Player"))
+        {
+            var abc = recievePlayer.GetComponent<PlayerCollider>();
+           
+            
+        }
+        else if (recievePlayer == gameObject.CompareTag("Bot"))
+        {
+            var abc = recievePlayer.GetComponent<BotCollider>();
+            abc.ReceiveBomb(transform);
+        }
+        StartCountdown();
+    }
     public void Boom()
     {
         if (isCountingDown)
@@ -42,6 +60,7 @@ public class Bomb : MonoBehaviour
                 isCountingDown = false;
                 Debug.Log("Boom");
                 Destroy(gameObject);
+                NewBom();
             }
         }
     }

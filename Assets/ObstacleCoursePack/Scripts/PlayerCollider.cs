@@ -38,7 +38,7 @@ public class PlayerCollider : MonoBehaviour
         }
     }
 
-    private Transform GetBomb()
+    public Transform GetBomb()
     {
         if (hasBomb)
             return Hand.transform.GetChild(0);

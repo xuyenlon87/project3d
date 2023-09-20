@@ -28,6 +28,9 @@ public class BotSpawn : MonoBehaviour
             //Tạo list người chơi còn lại
             //khi 1 tk chết => xóa khỏi list
             //goị hàm random range 0 - count-1 => index tìm
+            //check loser = bot hay player
+            //neu la bot thi get component bot, con neu la player thi get componnet cua player
+
         }
     }
 

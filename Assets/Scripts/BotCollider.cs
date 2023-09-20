@@ -78,7 +78,7 @@ public class BotCollider : MonoBehaviour
             }
         }
     }
-    private Transform GetBomb()
+    public Transform GetBomb()
     {
         if (hasBomb)
             return hand.transform.GetChild(0);
