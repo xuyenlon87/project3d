@@ -18,6 +18,7 @@ public class PlayerCollider : MonoBehaviour
 
     public void ReceiveBomb(Transform bomb)
     {
+        Debug.Log($"loser: {name} - receive bom: {bomb.name}");
         bomb.parent = Hand.transform;
         bomb.localPosition = Vector3.zero;
         _receiveAt = Time.time;
@@ -62,6 +63,7 @@ public class PlayerCollider : MonoBehaviour
     private void Start()
     {
         alive = true;
+        BotSpawn.ListPlayer.Add(gameObject);
     }
     void Update()
     {

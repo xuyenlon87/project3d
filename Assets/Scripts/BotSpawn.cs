@@ -1,21 +1,39 @@
 ﻿using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class BotSpawn : MonoBehaviour
 {
     public GameObject botPrefab; // Kéo thả Prefab của con bot vào đây
-    public GameObject player;
     public int numberOfBots; // Số lượng con bot cần sao chép
     public float spawnInterval = 0.5f; // Khoảng thời gian giữa mỗi lần sao chép
     public Vector3[] spawnPositions; // Mảng chứa các vị trí xuất hiện
+
+    private static List<GameObject> _listPlayer = new List<GameObject>();
     
-    public static List<GameObject> ListPlayer = new List<GameObject>();
+    public List<GameObject> debugPlayer;
     private int currentBotIndex = 0;
+
+
+    public static List<GameObject> ListPlayer { get
+        {
+            if (_listPlayer == null)
+            {
+                _listPlayer = new List<GameObject>();
+            }
+            return _listPlayer;
+        }
+    }
+
+
+    private void Awake()
+    {
+        debugPlayer = _listPlayer;
+    }
 
     private IEnumerator Start()
     {
-        ListPlayer.Add(player);
         yield return new WaitForSeconds(spawnInterval);
         while (currentBotIndex < numberOfBots)
         {
@@ -36,6 +54,6 @@ public class BotSpawn : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(ListPlayer.Count);
+
     }
 }

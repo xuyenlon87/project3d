@@ -38,10 +38,12 @@ public class BotCollider : MonoBehaviour
 
     public void ReceiveBomb(Transform bomb)
     {
+        Debug.Log($"loser: {name} - receive bom: {bomb.name}");
         hasBomb = true;
         bomb.parent = hand.transform;
         bomb.localPosition = Vector3.zero;
         _receiveAt = Time.time;
+        RefenceBom();
 
     }
 
@@ -91,9 +93,13 @@ public class BotCollider : MonoBehaviour
         alive = true;
     }
 
-    private void Update()
+    void RefenceBom()
     {
         bomb = hand.GetComponentInChildren<Bomb>();
+    }
+    private void Update()
+    {
         Boom();
+        Debug.Log (BotSpawn.ListPlayer.Count);
     }
 }

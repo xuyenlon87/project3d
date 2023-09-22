@@ -8,6 +8,7 @@ public class Bomb : MonoBehaviour
     public Text CountdownBomb;
     private bool isCountingDown = false;
     public float CountdownTime = 5f;
+    public float delayTime = 1f;
     public GameObject bombPrefab;
     // Start is called before the first frame update
     void Start()
@@ -27,27 +28,46 @@ public class Bomb : MonoBehaviour
     }
     private IEnumerator CountdownCoroutine()
     {
-        yield return new WaitForSeconds(CountdownTime);
+        yield return new WaitForSeconds(delayTime);
         isCountingDown = true;
     }
 
-    void  NewBom()
+    void NewBom()
     {
-        GameObject newBom = Instantiate(bombPrefab);
-        var index = Random.Range(0,BotSpawn.ListPlayer.Count - 1);
-        var recievePlayer = BotSpawn.ListPlayer[index];
-        if (recievePlayer == gameObject.CompareTag("Player"))
+        if (BotSpawn.ListPlayer.Count >= 1)
         {
-            var abc = recievePlayer.GetComponent<PlayerCollider>();
-           
-            
+            GameObject newBom = Instantiate(bombPrefab);
+            var index = Random.Range(0, BotSpawn.ListPlayer.Count - 1);
+            var loser = BotSpawn.ListPlayer[index];
+            if (loser.CompareTag("Player"))
+            {
+                Debug.Log("bomb player");
+                loser = GameObject.FindGameObjectWithTag("Player");
+                var abc = loser.GetComponent<PlayerCollider>();
+                if (abc == null)
+                //{
+                //    Debug.Log($"loser: {loser.name}\nindex: {index}");
+                //}
+                abc.ReceiveBomb(newBom.transform);
+
+            }
+            else if (loser.CompareTag("Bot"))
+            {
+                loser = GameObject.FindGameObjectWithTag("Bot");
+                var acb = loser.GetComponent<BotCollider>();
+                if(acb == null)
+                {
+                    Debug.Log("full");
+                }
+                acb.ReceiveBomb(newBom.transform);
+            }
+            else
+            {
+                Debug.Log("bomb nothing");
+
+            }
+            StartCountdown();
         }
-        else if (recievePlayer == gameObject.CompareTag("Bot"))
-        {
-            var abc = recievePlayer.GetComponent<BotCollider>();
-            abc.ReceiveBomb(transform);
-        }
-        StartCountdown();
     }
     public void Boom()
     {
