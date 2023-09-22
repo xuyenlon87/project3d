@@ -1400,7 +1400,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botPrefab: {fileID: 6044222380166353293, guid: 5af58f6750cf603419e87b561deeffd6, type: 3}
-  player: {fileID: 5035827294760958180, guid: e0cc8ba7d0c44fe4baa600ca61444ea1, type: 3}
   numberOfBots: 7
   spawnInterval: 1
   spawnPositions:
@@ -1411,6 +1410,7 @@ MonoBehaviour:
   - {x: -1, y: 0, z: 5}
   - {x: -5, y: 0, z: -2}
   - {x: -3, y: 0, z: -3}
+  debugPlayer: []
 --- !u!4 &438749452
 Transform:
   m_ObjectHideFlags: 0
@@ -3516,7 +3516,7 @@ PrefabInstance:
       objectReference: {fileID: 5191252778754460997, guid: 34a1b385d053b914cb35c19f0cbd5005, type: 3}
     - target: {fileID: 5035827294130014758, guid: e0cc8ba7d0c44fe4baa600ca61444ea1, type: 3}
       propertyPath: CountdownTime
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5035827294760958180, guid: e0cc8ba7d0c44fe4baa600ca61444ea1, type: 3}
       propertyPath: m_Name
