@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,32 +31,38 @@ public class Bomb : MonoBehaviour
         isCountingDown = true;
     }
 
+    void ChoonseLoser()
+    {
+
+    }
     void NewBom()
     {
         if (BotSpawn.ListPlayer.Count >= 1)
         {
             GameObject newBom = Instantiate(bombPrefab);
             var index = Random.Range(0, BotSpawn.ListPlayer.Count - 1);
-            var loser = BotSpawn.ListPlayer[index];
+            GameObject loser = BotSpawn.ListPlayer[index];
             if (loser.CompareTag("Player"))
             {
                 Debug.Log("bomb player");
                 loser = GameObject.FindGameObjectWithTag("Player");
                 var abc = loser.GetComponent<PlayerCollider>();
                 if (abc == null)
-                //{
-                //    Debug.Log($"loser: {loser.name}\nindex: {index}");
-                //}
-                abc.ReceiveBomb(newBom.transform);
+                    //{
+                    //    Debug.Log($"loser: {loser.name}\nindex: {index}");
+                    //}
+                    abc.ReceiveBomb(newBom.transform);
 
             }
             else if (loser.CompareTag("Bot"))
             {
                 loser = GameObject.FindGameObjectWithTag("Bot");
                 var acb = loser.GetComponent<BotCollider>();
-                if(acb == null)
+                if (acb == null)
                 {
-                    Debug.Log("full");
+                    {
+                        Debug.Log($"loser: {loser.name}\nindex: {index}");
+                    }
                 }
                 acb.ReceiveBomb(newBom.transform);
             }
@@ -80,6 +85,7 @@ public class Bomb : MonoBehaviour
                 isCountingDown = false;
                 Debug.Log("Boom");
                 Destroy(gameObject);
+                Debug.Log("delbom");
                 NewBom();
             }
         }

@@ -38,7 +38,7 @@ public class BotCollider : MonoBehaviour
 
     public void ReceiveBomb(Transform bomb)
     {
-        Debug.Log($"loser: {name} - receive bom: {bomb.name}");
+        Debug.Log($"loser: {name} - receive bom: {bomb.name} -");
         hasBomb = true;
         bomb.parent = hand.transform;
         bomb.localPosition = Vector3.zero;
@@ -65,17 +65,29 @@ public class BotCollider : MonoBehaviour
                 hasBomb = false;
             }
         }
+        else if (other.gameObject.CompareTag("Rotator"))
+        {
+            gameObject.GetComponent<Collider>().isTrigger = false;
+        }
 
     }
 
-    private void Boom()
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Rotator"))
+        {
+            gameObject.GetComponent<Collider>().isTrigger = true;
+        }
+    }
+
+    private void BoomBot()
     {
         if(bomb.CountdownTime <= 0)
         {
             if (hasBomb)
             {
                 BotSpawn.ListPlayer.Remove(gameObject);
-                Destroy(gameObject);
+                //Destroy(gameObject);
                 alive = false;
             }
         }
@@ -99,7 +111,6 @@ public class BotCollider : MonoBehaviour
     }
     private void Update()
     {
-        Boom();
-        Debug.Log (BotSpawn.ListPlayer.Count);
+        BoomBot();
     }
 }

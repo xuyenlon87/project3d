@@ -13,6 +13,14 @@ public class PlayerCollider : MonoBehaviour
     private float _delayToPassBomb = 2f;
     private Bomb bomb;
     private bool alive;
+    private Rigidbody rb;
+    [SerializeField]
+    private float speed = 10f;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     private bool CanPassBomb => Time.time - _receiveAt >= _delayToPassBomb;
 
@@ -37,7 +45,21 @@ public class PlayerCollider : MonoBehaviour
                 hasBomb = false;
             }
         }
+
+            else if (other.gameObject.CompareTag("Rotator"))
+            {
+            gameObject.GetComponent<Collider>().isTrigger = false;
+            }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Rotator") )
+        {
+            gameObject.GetComponent<Collider>().isTrigger = true;
+        }
+    }
+
 
     public Transform GetBomb()
     {
