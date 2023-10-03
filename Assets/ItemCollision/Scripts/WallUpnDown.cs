@@ -22,7 +22,10 @@ public class WallUpnDown : MonoBehaviour
     void Update()
     {
         WallDown();
-        WallUp();
+        if (isUp)
+        {
+            Invoke("WallUp", 2f);
+        }
     }
 
     private void WallDown()
