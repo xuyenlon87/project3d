@@ -3520,7 +3520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3228fcc72a9a67b49b9478b7ac726331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 2133218661}
+  offset: {x: 0, y: 10, z: -7}
 --- !u!4 &978377904 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3872001226836439029, guid: 1f9416082698e614ebb7003c2d80098b, type: 3}
@@ -3854,15 +3855,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5035827294760958748, guid: e0cc8ba7d0c44fe4baa600ca61444ea1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: 3.14
       objectReference: {fileID: 0}
     - target: {fileID: 5035827294760958748, guid: e0cc8ba7d0c44fe4baa600ca61444ea1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 5035827294760958748, guid: e0cc8ba7d0c44fe4baa600ca61444ea1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.86
+      value: -7.64
       objectReference: {fileID: 0}
     - target: {fileID: 5035827294760958748, guid: e0cc8ba7d0c44fe4baa600ca61444ea1, type: 3}
       propertyPath: m_LocalRotation.w
