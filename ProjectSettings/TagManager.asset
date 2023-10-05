@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Rotator
   - Wall
+  - JoyStick
   layers:
   - Default
   - TransparentFX

@@ -6,19 +6,22 @@ public class Bomb : MonoBehaviour
 {
     public Text CountdownBomb;
     private bool isCountingDown = false;
-    public float CountdownTime = 5f;
+    public float CountdownTime;
     public float delayTime = 1f;
     public GameObject bombPrefab;
     // Start is called before the first frame update
     void Start()
     {
-        StartCountdown();
     }
-
     // Update is called once per frame
     void Update()
     {
         Boom();
+    }
+
+    public void DelayNewBom()
+    {
+        Invoke("NewBom", 5f);
     }
     void StartCountdown()
     {
@@ -30,16 +33,12 @@ public class Bomb : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
         isCountingDown = true;
     }
-
-    void ChoonseLoser()
-    {
-
-    }
     void NewBom()
     {
         if (BotSpawn.ListPlayer.Count >= 1)
         {
             GameObject newBom = Instantiate(bombPrefab);
+            Debug.Log("newbom");
             var index = Random.Range(0, BotSpawn.ListPlayer.Count - 1);
             GameObject loser = BotSpawn.ListPlayer[index];
             if (loser.CompareTag("Player"))
@@ -71,7 +70,24 @@ public class Bomb : MonoBehaviour
                 Debug.Log("bomb nothing");
 
             }
+            SetupCountdownTime();
             StartCountdown();
+        }
+    }
+
+    void SetupCountdownTime()
+    {
+        if (BotSpawn.ListPlayer.Count >= 6)
+        {
+            CountdownTime = 8f;
+        }
+        else if (BotSpawn.ListPlayer.Count >= 3 && BotSpawn.ListPlayer.Count < 6)
+        {
+            CountdownTime = 10f;
+        }
+        else if (BotSpawn.ListPlayer.Count == 2)
+        {
+            CountdownTime = 15f;
         }
     }
     public void Boom()

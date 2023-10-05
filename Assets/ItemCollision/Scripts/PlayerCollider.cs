@@ -12,7 +12,6 @@ public class PlayerCollider : MonoBehaviour
     [SerializeField]
     private float _delayToPassBomb = 2f;
     private Bomb bomb;
-    private bool alive;
     private Rigidbody rb;
     [SerializeField]
     private float speed = 10f;
@@ -77,15 +76,12 @@ public class PlayerCollider : MonoBehaviour
             {
                 BotSpawn.ListPlayer.Remove(gameObject);
                 Destroy(gameObject);
-                alive = false;
             }
         }
     }
 
     private void Start()
     {
-        alive = true;
-        BotSpawn.ListPlayer.Add(gameObject);
     }
     void Update()
     {

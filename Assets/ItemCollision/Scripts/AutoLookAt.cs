@@ -7,7 +7,8 @@ public class AutoLookAt : MonoBehaviour
     [SerializeField]
     private Transform target;
     void Update()
-    {   
+    {
+        target = GameObject.FindGameObjectWithTag("MainCamera").transform;
         transform.LookAt(target);
     }
 }

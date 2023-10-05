@@ -79,7 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0
-  m_Text: 5
+  m_Text: 8
 --- !u!1 &4348059740547192907
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CountdownBomb: {fileID: 259664598492996373}
-  CountdownTime: 5
+  CountdownTime: 8
+  delayTime: 1
   bombPrefab: {fileID: 5191252778754460997}
 --- !u!1 &5296527600682190594
 GameObject:

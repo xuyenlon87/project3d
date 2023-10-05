@@ -10,7 +10,6 @@ public class BotCollider : MonoBehaviour
     private float _receiveAt;
     [SerializeField]
     private float _delayToPassBomb = 2f;
-    private bool alive;
     private Bomb bomb;
 
     public BotState BotState
@@ -38,6 +37,7 @@ public class BotCollider : MonoBehaviour
 
     public void ReceiveBomb(Transform bomb)
     {
+        RefenceBom();
         Debug.Log($"loser: {name} - receive bom: {bomb.name} -");
         hasBomb = true;
         bomb.parent = hand.transform;
@@ -88,7 +88,6 @@ public class BotCollider : MonoBehaviour
             {
                 BotSpawn.ListPlayer.Remove(gameObject);
                 //Destroy(gameObject);
-                alive = false;
             }
         }
     }
@@ -101,8 +100,6 @@ public class BotCollider : MonoBehaviour
     }
     private void Start()
     {
-        bomb = hand.GetComponentInChildren<Bomb>();
-        alive = true;
     }
 
     void RefenceBom()

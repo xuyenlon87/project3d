@@ -5,12 +5,12 @@ using UnityEngine;
 public class LookPlayer : MonoBehaviour
 {
     [SerializeField]
-    private Transform targetPrefab;
+    private Transform targetPlayerShop;
     private GameObject target;
     public Vector3 offset;
+    public Vector3 offsetPlayerShop;
     private float speed = 2f;
     private bool isMoving = false;
-    public BotSpawn botSpawn;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +24,11 @@ public class LookPlayer : MonoBehaviour
         {
             StartCoroutine(MoveCamera());
         }
+    }
+
+    public void TargetPlayerShop()
+    {
+        transform.position = new Vector3(targetPlayerShop.position.x + offsetPlayerShop.x, targetPlayerShop.position.y + offsetPlayerShop.y, targetPlayerShop.position.z + offsetPlayerShop.z);
     }
     public void DelayQuickPlay()
     {
