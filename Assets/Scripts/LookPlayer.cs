@@ -5,24 +5,35 @@ using UnityEngine;
 public class LookPlayer : MonoBehaviour
 {
     [SerializeField]
-    private Transform target;
+    private Transform targetPrefab;
+    private GameObject target;
     public Vector3 offset;
     private float speed = 2f;
     private bool isMoving = false;
+    public BotSpawn botSpawn;
     // Start is called before the first frame update
     void Start()
     {
+    
+    }
+
+    public void QuickPlay()
+    {
+        target = GameObject.FindGameObjectWithTag("Player");
         if (target != null)
         {
             StartCoroutine(MoveCamera());
         }
     }
-
+    public void DelayQuickPlay()
+    {
+        Invoke("QuickPlay", 3f);
+    }
     private IEnumerator MoveCamera()
     {
         isMoving = true;
-        Vector3 targetPosition = new Vector3(target.position.x + offset.x, target.position.y + offset.y, target.position.z + offset.z);
-        while(Vector3.Distance(transform.position, target.position) > 1f)
+        Vector3 targetPosition = new Vector3(target.transform.position.x + offset.x, target.transform.position.y + offset.y, target.transform.position.z + offset.z);
+        while(Vector3.Distance(transform.position, target.transform.position) > 1f)
         {
             transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
             yield return null;
@@ -37,8 +48,9 @@ public class LookPlayer : MonoBehaviour
         {
             if (!isMoving)
             {
-                transform.position = new Vector3(target.position.x + offset.x, target.position.y + offset.y, target.position.z + offset.z);
+                transform.position = new Vector3(target.transform.position.x + offset.x, target.transform.position.y + offset.y, target.transform.position.z + offset.z);
             }
+
         }
     }
 }

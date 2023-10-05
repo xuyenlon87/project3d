@@ -7,13 +7,17 @@ public class BotSpawn : MonoBehaviour
 {
     public GameObject botPrefab; // Kéo thả Prefab của con bot vào đây
     public int numberOfBots; // Số lượng con bot cần sao chép
+    public int numberOfPlayer;
     public float spawnInterval = 0.5f; // Khoảng thời gian giữa mỗi lần sao chép
-    public Vector3[] spawnPositions; // Mảng chứa các vị trí xuất hiện
+    public Vector3[] spawnPositionsBot; // Mảng chứa các vị trí xuất hiện
+    public Vector3 spawnPositionPlayer;
+    public GameObject playerPrefab;
 
     private static List<GameObject> _listPlayer = new List<GameObject>();
     
     public List<GameObject> debugPlayer;
     private int currentBotIndex = 0;
+    private int currentPlayerIndex = 0;
 
 
     public static List<GameObject> ListPlayer { get
@@ -32,23 +36,30 @@ public class BotSpawn : MonoBehaviour
         debugPlayer = _listPlayer;
     }
 
-    private IEnumerator Start()
+    public void StartSpawn()
     {
+        StartCoroutine(Spawn());
+        Debug.Log("spawn");
+    }
+
+    private IEnumerator Spawn()
+    {
+        if (currentPlayerIndex < numberOfPlayer)
+        {
+             GameObject newPlayer = Instantiate(playerPrefab, spawnPositionPlayer, Quaternion.identity);
+            currentPlayerIndex++;
+            ListPlayer.Add(newPlayer);
+
+
+        }
         yield return new WaitForSeconds(spawnInterval);
         while (currentBotIndex < numberOfBots)
         {
-            Vector3 spawnPosition = spawnPositions[currentBotIndex];
+            Vector3 spawnPosition = spawnPositionsBot[currentBotIndex];
             GameObject newBot = Instantiate(botPrefab, spawnPosition, Quaternion.identity);
             ListPlayer.Add(newBot);
             currentBotIndex++;
-
             yield return new WaitForSeconds(spawnInterval);
-            //Tạo list người chơi còn lại
-            //khi 1 tk chết => xóa khỏi list
-            //goị hàm random range 0 - count-1 => index tìm
-            //check loser = bot hay player
-            //neu la bot thi get component bot, con neu la player thi get componnet cua player
-
         }
     }
 
