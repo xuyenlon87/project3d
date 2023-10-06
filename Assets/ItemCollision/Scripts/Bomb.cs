@@ -5,17 +5,19 @@ using UnityEngine.UI;
 public class Bomb : MonoBehaviour
 {
     public Text CountdownBomb;
-    private bool isCountingDown = false;
+    private bool isCountingDown ;
     public float CountdownTime;
     public float delayTime = 1f;
     public GameObject bombPrefab;
     // Start is called before the first frame update
     void Start()
     {
+
     }
     // Update is called once per frame
     void Update()
     {
+
         Boom();
     }
 
@@ -30,6 +32,7 @@ public class Bomb : MonoBehaviour
     }
     private IEnumerator CountdownCoroutine()
     {
+        Debug.Log("countdown");
         yield return new WaitForSeconds(delayTime);
         isCountingDown = true;
     }
@@ -38,7 +41,7 @@ public class Bomb : MonoBehaviour
         if (BotSpawn.ListPlayer.Count >= 1)
         {
             GameObject newBom = Instantiate(bombPrefab);
-            Debug.Log("newbom");
+            newBom.SetActive(true);
             var index = Random.Range(0, BotSpawn.ListPlayer.Count - 1);
             GameObject loser = BotSpawn.ListPlayer[index];
             if (loser.CompareTag("Player"))
