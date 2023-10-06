@@ -98,6 +98,5 @@ public class BotSpawn : MonoBehaviour
     }
     private void Update()
     {
-
     }
 }

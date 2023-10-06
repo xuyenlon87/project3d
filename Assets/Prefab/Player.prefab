@@ -443,7 +443,6 @@ MonoBehaviour:
   hasBomb: 1
   Hand: {fileID: 5035827294868883288}
   _delayToPassBomb: 1
-  speed: 10
 --- !u!114 &2133218662
 MonoBehaviour:
   m_ObjectHideFlags: 0

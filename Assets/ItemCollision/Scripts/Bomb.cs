@@ -40,32 +40,33 @@ public class Bomb : MonoBehaviour
         if (BotSpawn.ListPlayer.Count >= 1)
         {
             GameObject newBom = Instantiate(bombPrefab);
-
             var index = Random.Range(0, BotSpawn.ListPlayer.Count - 1);
             GameObject loser = BotSpawn.ListPlayer[index];
+            Debug.Log("loser index: " + index);
             if (loser.CompareTag("Player"))
             {
-                Debug.Log("bomb player");
-                loser = GameObject.FindGameObjectWithTag("Player");
                 var abc = loser.GetComponent<PlayerCollider>();
-                if (abc == null)
-                    //{
-                    //    Debug.Log($"loser: {loser.name}\nindex: {index}");
-                    //}
+                if(abc != null)
+                {
                     abc.ReceiveBomb(newBom.transform);
+                }
+                else
+                {
+                    Debug.Log("NotPlayer");
+                }
 
             }
             else if (loser.CompareTag("Bot"))
             {
-                loser = GameObject.FindGameObjectWithTag("Bot");
                 var acb = loser.GetComponent<BotCollider>();
-                if (acb == null)
+                if (acb != null)
                 {
-                    {
-                        Debug.Log($"loser: {loser.name}\nindex: {index}");
-                    }
+                    acb.ReceiveBomb(newBom.transform);
                 }
-                acb.ReceiveBomb(newBom.transform);
+                else
+                {
+                    Debug.Log("NotBot");
+                }
             }
             else
             {

@@ -38,7 +38,7 @@ public class LookPlayer : MonoBehaviour
     {
         isMoving = true;
         Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y  , target.transform.position.z  );
-        while(Vector3.Distance(transform.position, target.transform.position) >16f)
+        while(Vector3.Distance(transform.position, target.transform.position) > 16f)
         {
             transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
             yield return null;

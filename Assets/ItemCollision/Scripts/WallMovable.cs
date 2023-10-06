@@ -32,7 +32,7 @@ public class WallMovable : MonoBehaviour
 				transform.position += Vector3.up * Time.deltaTime * speed;
 			}
 			else if (!isWaiting)
-				StartCoroutine(WaitToChange(0.25f));
+				StartCoroutine(WaitToChange(1f));
 		}
 		else
 		{
@@ -44,7 +44,7 @@ public class WallMovable : MonoBehaviour
 				transform.position -= Vector3.up * Time.deltaTime * speed;
 			}
 			else if (!isWaiting)
-				StartCoroutine(WaitToChange(0.25f));
+				StartCoroutine(WaitToChange(1f));
 		}
 	}
 

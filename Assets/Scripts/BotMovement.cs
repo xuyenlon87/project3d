@@ -41,8 +41,8 @@ public class BotMovement : MonoBehaviour
     {
         NavMeshHit hit;
         Vector3 randomPoint = transform.position + Random.insideUnitSphere * 10f;
-
-        if (NavMesh.SamplePosition(randomPoint, out hit, 10f, NavMesh.AllAreas))
+        float randomRadius = Random.Range(5, 15);
+        if (NavMesh.SamplePosition(randomPoint, out hit, randomRadius, NavMesh.AllAreas))
         {
             return hit.position;
         }

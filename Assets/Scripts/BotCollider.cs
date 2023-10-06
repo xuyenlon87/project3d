@@ -37,13 +37,11 @@ public class BotCollider : MonoBehaviour
 
     public void ReceiveBomb(Transform bomb)
     {
-        RefenceBom();
-        Debug.Log($"loser: {name} - receive bom: {bomb.name} -");
+        //Debug.Log($"loser: {name} - receive bom: {bomb.name} -");
         hasBomb = true;
         bomb.parent = hand.transform;
         bomb.localPosition = Vector3.zero;
         _receiveAt = Time.time;
-        RefenceBom();
 
     }
 
@@ -97,18 +95,13 @@ public class BotCollider : MonoBehaviour
     }
     public Transform GetBomb()
     {
-        if (hasBomb)
+        if (hasBomb && hand != null)
             return hand.transform.GetChild(0);
         else
             return null;
     }
     private void Start()
     {
-    }
-
-    void RefenceBom()
-    {
-        bomb = hand.GetComponentInChildren<Bomb>();
     }
     private void Update()
     {

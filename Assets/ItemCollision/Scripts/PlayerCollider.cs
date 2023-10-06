@@ -14,7 +14,6 @@ public class PlayerCollider : MonoBehaviour
     private Bomb bomb;
     private Rigidbody rb;
     [SerializeField]
-    private float speed = 10f;
 
     private void Awake()
     {
@@ -25,7 +24,7 @@ public class PlayerCollider : MonoBehaviour
 
     public void ReceiveBomb(Transform bomb)
     {
-        Debug.Log($"loser: {name} - receive bom: {bomb.name}");
+        //Debug.Log($"loser: {name} - receive bom: {bomb.name}");
         bomb.parent = Hand.transform;
         bomb.localPosition = Vector3.zero;
         _receiveAt = Time.time;
@@ -62,7 +61,7 @@ public class PlayerCollider : MonoBehaviour
 
     public Transform GetBomb()
     {
-        if (hasBomb)
+        if (hasBomb && Hand != null)
             return Hand.transform.GetChild(0);
         else
             return null;
