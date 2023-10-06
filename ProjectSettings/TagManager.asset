@@ -10,6 +10,9 @@ TagManager:
   - Rotator
   - Wall
   - JoyStick
+  - PlayerFoot
+  - PlayerHand
+  - BotHand
   layers:
   - Default
   - TransparentFX

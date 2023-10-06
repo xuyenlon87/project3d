@@ -17,7 +17,6 @@ public class Bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Boom();
     }
 
@@ -41,7 +40,7 @@ public class Bomb : MonoBehaviour
         if (BotSpawn.ListPlayer.Count >= 1)
         {
             GameObject newBom = Instantiate(bombPrefab);
-            newBom.SetActive(true);
+
             var index = Random.Range(0, BotSpawn.ListPlayer.Count - 1);
             GameObject loser = BotSpawn.ListPlayer[index];
             if (loser.CompareTag("Player"))
@@ -102,7 +101,6 @@ public class Bomb : MonoBehaviour
             if (CountdownTime <= 0f)
             {
                 isCountingDown = false;
-                Debug.Log("Boom");
                 Destroy(gameObject);
                 Debug.Log("delbom");
                 NewBom();

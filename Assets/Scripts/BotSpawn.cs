@@ -52,6 +52,7 @@ public class BotSpawn : MonoBehaviour
         if (currentPlayerIndex < numberOfPlayer)
         {
              GameObject newPlayer = Instantiate(playerPrefab, spawnPositionPlayer, Quaternion.identity);
+            newPlayer.SetActive(true);
             currentPlayerIndex++;
             ListPlayer.Add(newPlayer);
 
@@ -62,6 +63,7 @@ public class BotSpawn : MonoBehaviour
         {
             Vector3 spawnPosition = spawnPositionsBot[currentBotIndex];
             GameObject newBot = Instantiate(botPrefab, spawnPosition, Quaternion.identity);
+            newBot.SetActive(true);
             ListPlayer.Add(newBot);
             //HatBot randomHat = GetRandomHat();
             //if (randomHat != null)

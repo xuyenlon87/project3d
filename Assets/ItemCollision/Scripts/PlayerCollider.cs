@@ -70,7 +70,7 @@ public class PlayerCollider : MonoBehaviour
 
     private void Boom()
     {
-        if (bomb.CountdownTime <= 0)
+        if (bomb != null && bomb.CountdownTime <= 0)
         {
             if (hasBomb)
             {
@@ -85,7 +85,9 @@ public class PlayerCollider : MonoBehaviour
     }
     void Update()
     {
+        Hand = GameObject.FindGameObjectWithTag("PlayerHand");
         bomb = Hand.GetComponentInChildren<Bomb>();
+        Player = GameObject.FindGameObjectWithTag("Player");
         Boom();
     }
 }

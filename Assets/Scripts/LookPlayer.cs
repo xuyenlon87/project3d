@@ -6,15 +6,15 @@ public class LookPlayer : MonoBehaviour
 {
     [SerializeField]
     private Transform targetPlayerShop;
-    private GameObject target;
+    public GameObject target;
     public Vector3 offset;
     public Vector3 offsetPlayerShop;
-    private float speed = 2f;
-    private bool isMoving = false;
+    private float speed = 1f;
+    public bool isMoving = false;
     // Start is called before the first frame update
     void Start()
     {
-    
+        isMoving = true;
     }
 
     public void QuickPlay()
@@ -37,13 +37,14 @@ public class LookPlayer : MonoBehaviour
     private IEnumerator MoveCamera()
     {
         isMoving = true;
-        Vector3 targetPosition = new Vector3(target.transform.position.x + offset.x, target.transform.position.y + offset.y, target.transform.position.z + offset.z);
-        while(Vector3.Distance(transform.position, target.transform.position) > 1f)
+        Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y  , target.transform.position.z  );
+        while(Vector3.Distance(transform.position, target.transform.position) >16f)
         {
             transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
             yield return null;
         }
         isMoving = false;
+
     }
 
     // Update is called once per frame

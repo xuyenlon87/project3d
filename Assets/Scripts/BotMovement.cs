@@ -51,6 +51,7 @@ public class BotMovement : MonoBehaviour
     }
     private void Update()
     {
+        playerFoot = GameObject.FindGameObjectWithTag("PlayerFoot").transform; 
         if (botState.hasBomb)
         {
             float distance = Vector3.Distance(transform.position, playerFoot.position);

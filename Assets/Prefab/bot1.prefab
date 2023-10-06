@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 790615951}
   m_Layer: 0
   m_Name: Hands
-  m_TagString: Untagged
+  m_TagString: BotHand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -357,7 +357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6044222380166353332
 Transform:
   m_ObjectHideFlags: 0
@@ -455,7 +455,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 48
   m_CollisionDetection: 0
 --- !u!195 &6044222380166353295
 NavMeshAgent:
@@ -467,7 +467,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3
+  m_Speed: 6
   m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6044222380166353293}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2190fc4886adc3b4c9882591191d9ae4, type: 3}
   m_Name: 
@@ -520,4 +520,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasBomb: 0
-  alive: 0

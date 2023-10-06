@@ -78,11 +78,15 @@ public class BotCollider : MonoBehaviour
         {
             gameObject.GetComponent<Collider>().isTrigger = true;
         }
+        else if (other.gameObject.CompareTag("Bomb"))
+        {
+            hasBomb = false;
+        }
     }
 
     private void BoomBot()
     {
-        if(bomb.CountdownTime <= 0)
+        if(bomb != null && bomb.CountdownTime <= 0)
         {
             if (hasBomb)
             {
@@ -108,6 +112,8 @@ public class BotCollider : MonoBehaviour
     }
     private void Update()
     {
+        hand = GameObject.FindGameObjectWithTag("BotHand");
+        bomb = hand.GetComponentInChildren<Bomb>();
         BoomBot();
     }
 }
