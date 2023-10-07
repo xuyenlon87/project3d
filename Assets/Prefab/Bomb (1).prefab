@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6855721654865161070}
   - component: {fileID: 726020870121111222}
   - component: {fileID: 259664598492996373}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: CountdownTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,14 +25,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 618089354015448897}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4266026950102419569}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 8761373898469503719}
   - component: {fileID: 3339983537241642179}
   - component: {fileID: 4387968185103996826}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,13 +205,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4388182918555780400}
   - component: {fileID: 8814750177329631975}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bomb (1)
   m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4388182918555780400
 Transform:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ Transform:
   m_GameObject: {fileID: 5191252778754460997}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1894359737692713193}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 8076147851201052235}
   - component: {fileID: 5597352750167774975}
   - component: {fileID: 4110325138918117015}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: spark2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5367,7 +5367,7 @@ GameObject:
   - component: {fileID: 3228023281282173666}
   - component: {fileID: 3080837430738444399}
   - component: {fileID: 5510667706602494102}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sparkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10188,7 +10188,7 @@ GameObject:
   - component: {fileID: 1799959995246092702}
   - component: {fileID: 855875305026439155}
   - component: {fileID: 1804369531229795421}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15007,7 +15007,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8554360877714292928}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15044,7 +15044,7 @@ GameObject:
   - component: {fileID: 1902282832844481872}
   - component: {fileID: 2948978165434345210}
   - component: {fileID: 3862847750035867197}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: spark3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20181,7 +20181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffdfad76d2f7648d19c79be026141ab7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffdfad76d2f7648d19c79be026141ab7, type: 3}
       propertyPath: m_LocalRotation.x
@@ -20189,7 +20189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffdfad76d2f7648d19c79be026141ab7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffdfad76d2f7648d19c79be026141ab7, type: 3}
       propertyPath: m_LocalRotation.z
@@ -20201,7 +20201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffdfad76d2f7648d19c79be026141ab7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffdfad76d2f7648d19c79be026141ab7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -20218,6 +20218,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ffdfad76d2f7648d19c79be026141ab7, type: 3}
       propertyPath: m_Name
       value: bomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ffdfad76d2f7648d19c79be026141ab7, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ffdfad76d2f7648d19c79be026141ab7, type: 3}
       propertyPath: m_TagString

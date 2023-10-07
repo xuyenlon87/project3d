@@ -85,7 +85,7 @@ public class PlayerCollider : MonoBehaviour
     void Update()
     {
         Hand = GameObject.FindGameObjectWithTag("PlayerHand");
-        bomb = Hand.GetComponentInChildren<Bomb>();
+        //bomb = Hand.GetComponentInChildren<Bomb>();
         Player = GameObject.FindGameObjectWithTag("Player");
         Boom();
     }

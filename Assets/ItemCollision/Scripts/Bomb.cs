@@ -12,7 +12,7 @@ public class Bomb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        StartCountdown();
     }
     // Update is called once per frame
     void Update()
@@ -40,6 +40,10 @@ public class Bomb : MonoBehaviour
         if (BotSpawn.ListPlayer.Count >= 1)
         {
             GameObject newBom = Instantiate(bombPrefab);
+            newBom.SetActive(true);
+            Bomb bombComponent = newBom.GetComponent<Bomb>();
+            bombComponent.enabled = true;
+            
             var index = Random.Range(0, BotSpawn.ListPlayer.Count - 1);
             GameObject loser = BotSpawn.ListPlayer[index];
             Debug.Log("loser index: " + index);

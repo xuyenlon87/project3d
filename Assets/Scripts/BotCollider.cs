@@ -88,8 +88,9 @@ public class BotCollider : MonoBehaviour
         {
             if (hasBomb)
             {
+                Debug.Log("destroybot");
                 BotSpawn.ListPlayer.Remove(gameObject);
-                //Destroy(gameObject);
+                Destroy(gameObject);
             }
         }
     }
@@ -105,8 +106,6 @@ public class BotCollider : MonoBehaviour
     }
     private void Update()
     {
-        hand = GameObject.FindGameObjectWithTag("BotHand");
-        bomb = hand.GetComponentInChildren<Bomb>();
         BoomBot();
     }
 }
